@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.psc.playground.MiscAutoConfiguration
+  org.psc.playground.MiscAutoConfiguration,\
+  org.psc.playground.DefaultExceptionHandlerAutoConfiguration
