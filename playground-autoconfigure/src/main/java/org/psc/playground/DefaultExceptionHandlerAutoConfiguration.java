@@ -14,7 +14,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Slf4j
 @ControllerAdvice
-@ConditionalOnProperty(prefix = "playground", name = "enable-exception-handler", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "playground", name = "enable-exception-handler", havingValue = "true",
+        matchIfMissing = true)
 public class DefaultExceptionHandlerAutoConfiguration {
 
     private final PlaygroundAutoConfigurationProperties playgroundAutoConfigurationProperties;

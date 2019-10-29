@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   org.psc.playground.MiscAutoConfiguration,\
   org.psc.playground.DefaultExceptionHandlerAutoConfiguration,\
-  org.psc.playground.PlaygroundAutoConfigurationProperties
+  org.psc.playground.PlaygroundAutoConfigurationProperties,\
+  org.psc.playground.security.JwtSecurityConfiguration

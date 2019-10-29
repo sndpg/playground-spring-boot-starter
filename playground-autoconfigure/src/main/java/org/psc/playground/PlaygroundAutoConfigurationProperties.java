@@ -18,4 +18,10 @@ public class PlaygroundAutoConfigurationProperties {
      * Whether or not to enable {@link DefaultExceptionHandlerAutoConfiguration}
      */
     private boolean enableExceptionHandler;
+
+    /**
+     * Whether or not to enable {@link org.psc.playground.security.JwtSecurityConfiguration}
+     */
+    private boolean enableJwtSecurity;
+
 }
