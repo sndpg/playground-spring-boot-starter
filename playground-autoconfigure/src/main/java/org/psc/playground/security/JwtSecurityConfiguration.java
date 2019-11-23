@@ -19,6 +19,7 @@ public class JwtSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
         // @formatter:off
         httpSecurity.cors().and().csrf().disable()
                 .authorizeRequests()
