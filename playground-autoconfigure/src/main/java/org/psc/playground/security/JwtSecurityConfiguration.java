@@ -19,16 +19,15 @@ public class JwtSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-
         // @formatter:off
-        httpSecurity.cors().and().csrf().disable()
+        httpSecurity.csrf().disable()
                 .authorizeRequests()
                     .antMatchers(HttpMethod.POST).hasAnyAuthority("ROLE_USER")
                     .antMatchers(HttpMethod.GET).permitAll()
                 .and()
-                    .addFilter(jwtAuthorizationFilter(null, null))
-                    .sessionManagement()
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .addFilter(jwtAuthorizationFilter(null, null))
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // @formatter:on
     }
 
