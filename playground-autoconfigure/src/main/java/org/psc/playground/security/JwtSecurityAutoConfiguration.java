@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 @EnableWebSecurity
 @ConditionalOnProperty(prefix = "playground", value = "enable-jwt-security", havingValue = "true", matchIfMissing = true)
-public class JwtSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class JwtSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
