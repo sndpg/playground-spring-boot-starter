@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -32,7 +33,8 @@ public class JwtSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.POST).hasAnyAuthority("ROLE_USER")
                     .antMatchers(HttpMethod.GET).permitAll()
                 .and()
-                .addFilter(jwtAuthorizationFilter(null, null))
+//                .addFilter(jwtAuthorizationFilter(null, null))
+                .addFilterBefore(jwtAuthenticationFilter(null), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // @formatter:on
@@ -42,7 +44,7 @@ public class JwtSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     @ConditionalOnMissingBean
     @Override
     public AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
+        return authentication -> authentication;
     }
 
     @Bean
@@ -62,10 +64,15 @@ public class JwtSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
         return new ObjectMapper();
     }
 
+//    @Bean
+//    public JwtAuthorizationFilter jwtAuthorizationFilter(ObjectMapper objectMapper,
+//            AuthenticationManager authenticationManager) {
+//        return new JwtAuthorizationFilter(authenticationManager, objectMapper);
+//    }
+
     @Bean
-    public JwtAuthorizationFilter jwtAuthorizationFilter(ObjectMapper objectMapper,
-            AuthenticationManager authenticationManager) {
-        return new JwtAuthorizationFilter(authenticationManager, objectMapper);
+    public JwtAuthenticationFilter jwtAuthenticationFilter(AuthenticationManager authenticationManager){
+        return new JwtAuthenticationFilter(authenticationManager);
     }
 
 }

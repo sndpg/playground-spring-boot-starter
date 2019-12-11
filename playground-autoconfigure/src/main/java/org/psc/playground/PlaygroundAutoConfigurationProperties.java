@@ -44,9 +44,14 @@ public class PlaygroundAutoConfigurationProperties {
         private boolean defaultExceptionHandler;
 
         /**
-         * Whether or not to enable th JwtSecurityAutoConfiguration
+         * Whether or not to enable the JwtSecurityAutoConfiguration
          */
         private boolean jwtSecurity;
+
+        /**
+         * Whether or not to enable the DefaultSecurityAutoConfiguration
+         */
+        private boolean defaultSecurity;
     }
 
 }
