@@ -22,7 +22,7 @@ public class DefaultExceptionHandlerAutoConfiguration {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleException(Exception exception,
-                                                               HttpServletRequest httpServletRequest) {
+            HttpServletRequest httpServletRequest) {
         log.error("{}", playgroundAutoConfigurationProperties.isEnableExceptionHandler());
         log.error("an exception occurred with the following message: {}", exception.getMessage());
         return new ResponseEntity<>(Map.of("error", exception.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
